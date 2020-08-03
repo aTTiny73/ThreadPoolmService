@@ -1,0 +1,21 @@
+{
+ "hosts": [
+    { 
+     "ip":"192.169.32.1",
+
+     "recipients":[
+         "test1@recipient.com",
+         "test2@recipient.com"
+        ]
+    },
+
+    {
+     "ip":"192.169.132.13",
+
+     "recipients":[
+         "test3@recipient.com",
+         "test4@recipient.com"
+        ]
+    }
+  ] 
+}
