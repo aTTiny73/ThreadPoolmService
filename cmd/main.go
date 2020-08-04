@@ -14,15 +14,14 @@ import (
 )
 
 // Function that handles loading and unmarshaling from a config file.
-func loadFromfile(path string) pool.Hosts {
+func loadFromfile(path string) *pool.Hosts {
 	hosts := pool.Hosts{}
-	config, _ := os.Open(path)
-	bytevalue, _ := ioutil.ReadAll(config)
+	bytevalue, _ := ioutil.ReadFile(path)
 	err := json.Unmarshal(bytevalue, &hosts)
 	if err != nil {
 		fmt.Println(err)
 	}
-	return hosts
+	return &hosts
 }
 
 func main() {
