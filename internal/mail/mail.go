@@ -18,9 +18,9 @@ func Mailer(mailData []byte) {
 	}
 
 	var (
-		host = "//"
-		user = "//"
-		pass = "//"
+		host = "xxx"
+		user = "xxx"
+		pass = "xxx"
 	)
 	config := mailer.Config{
 		Host: host,
@@ -34,14 +34,16 @@ func Mailer(mailData []byte) {
 	mail.FromName = "Go Mailer"
 	mail.From = user
 
-	for _, v := range data.Recipients {
+	for _, mailAddres := range data.Recipients {
 
-		mail.SetTo(v)
+		mail.SetTo(mailAddres)
 		mail.Subject = "Server "
 		mail.Body = "Your server is down"
 
 		if err := Mailer.Send(mail); err != nil {
 			fmt.Println(err)
+		} else {
+			fmt.Println("Mail successfuly sent to", mailAddres)
 		}
 	}
 

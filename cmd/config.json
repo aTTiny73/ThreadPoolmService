@@ -4,7 +4,7 @@
      "ip":"192.169.32.1",
 
      "recipients":[
-         "test1@recipient.com",
+         "test1@recipent.com",
          "test2@recipient.com"
         ]
     },

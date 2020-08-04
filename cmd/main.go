@@ -33,9 +33,7 @@ func main() {
 	context, stopCoordinator := context.WithCancel(context.Background())
 	pool.CoordinatorInstance.Ctx = context
 
-	var hosts = loadFromfile("config.json")
-	dataByte, _ := json.Marshal(hosts)
-	fmt.Println(hosts)
+	var data = loadFromfile("config.json")
 
 	/*
 		// Adds workers equal to the number of CPUs
@@ -46,7 +44,11 @@ func main() {
 
 	go pool.CoordinatorInstance.Run()
 
-	pool.CoordinatorInstance.Enqueue(ping.Pinger, dataByte)
+	//Adding ping job for individual host
+	for _, v := range data.Hosts {
+		dataByte, _ := json.Marshal(v)
+		pool.CoordinatorInstance.Enqueue(ping.Pinger, dataByte)
+	}
 
 	<-stop
 	stopCoordinator()
